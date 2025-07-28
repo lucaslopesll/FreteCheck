@@ -1,0 +1,517 @@
+/* Variáveis de cor baseadas na logo */
+:root {
+    --primary-blue: #004080; /* Azul escuro da logo */
+    --secondary-red: #D90000; /* Vermelho da logo */
+    --light-gray: #f8f9fa;
+    --medium-gray: #e9ecef;
+    --dark-gray: #343a40;
+    --text-color: #212529;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107; /* Cor para observações */
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+.header img {
+    max-height: 80px; /* Ajuste conforme necessário */
+    margin-right: 20px;
+    border-radius: 8px; /* Adicionado arredondamento para a logo */
+}
+
+.header h1 {
+    color: var(--primary-blue);
+    font-size: 2.5em;
+    font-weight: 700;
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-gray);
+    font-size: 1.1em;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--medium-gray);
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 1em;
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="file"]:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 64, 128, 0.2);
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    letter-spacing: 0.5px;
+    display: flex; /* Para alinhar o ícone */
+    align-items: center; /* Para alinhar o ícone */
+    justify-content: center; /* Para centralizar o conteúdo */
+}
+
+button i {
+    margin-right: 10px; /* Espaço entre o ícone e o texto */
+}
+
+button:hover {
+    background-color: #0056b3; /* Um tom mais escuro de azul */
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.results {
+    margin-top: 40px;
+    border-top: 1px solid var(--medium-gray);
+    padding-top: 30px;
+}
+
+.results h2 {
+    color: var(--primary-blue);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 10px;
+}
+
+.results p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.results p strong {
+    color: var(--dark-gray);
+}
+
+/* Adicionado estilo para o resumo dos resultados */
+.summary-box {
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.summary-box p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.summary-box p i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.summary-box p .correct-icon {
+    color: var(--success-color);
+}
+
+.summary-box p .divergent-icon {
+    color: var(--danger-color);
+}
+
+/* Tabela responsiva */
+.table-responsive {
+    overflow-x: auto; /* Permite rolagem horizontal */
+    -webkit-overflow-scrolling: touch; /* Melhor rolagem em dispositivos touch */
+    border-radius: 8px; /* Adiciona borda arredondada ao container da tabela */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Sombra para o container */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0; /* Removido o margin-top, agora gerido pelo .results */
+    background-color: #ffffff;
+    border-radius: 8px; /* Adicionado arredondamento à tabela */
+    overflow: hidden; /* Garante que o conteúdo respeite o border-radius */
+    min-width: 700px; /* Garante que a tabela tenha uma largura mínima para evitar colapso excessivo */
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--medium-gray);
+    vertical-align: middle; /* Alinha o conteúdo verticalmente no meio */
+}
+
+th {
+    background-color: var(--primary-blue);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.95em;
+    position: sticky; /* Mantém o cabeçalho visível ao rolar */
+    top: 0;
+    z-index: 10;
+}
+
+tr:nth-child(even) {
+    background-color: var(--light-gray);
+}
+
+tr:hover {
+    background-color: var(--medium-gray);
+    transition: background-color 0.2s ease;
+}
+
+/* Estilos específicos para a página de resultados */
+.result-item { /* Este estilo era para o erro, mas não é usado para cada linha da tabela */
+    background-color: var(--light-gray);
+    border-left: 5px solid var(--primary-blue);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.result-item.divergente {
+    border-left-color: var(--danger-color);
+    background-color: #ffebeb; /* Um vermelho claro */
+}
+
+.result-item.correto {
+    border-left-color: var(--success-color);
+    background-color: #e6ffe6; /* Um verde claro */
+}
+
+/* Ajustes para as linhas da tabela */
+tr.divergente {
+    background-color: #ffebeb !important; /* !important para sobrescrever tr:nth-child(even) */
+}
+
+tr.correto {
+    background-color: #e6ffe6 !important; /* !important para sobrescrever tr:nth-child(even) */
+}
+
+/* Estilos para o status dentro da tabela */
+td .status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    color: white;
+}
+
+td .status.divergente {
+    background-color: var(--danger-color);
+}
+
+td .status.correto {
+    background-color: var(--success-color);
+}
+
+/* Estilos para botões de detalhes */
+.details-button {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    display: inline-flex; /* Para alinhar o ícone */
+    align-items: center; /* Para alinhar o ícone */
+    gap: 5px; /* Espaço entre o ícone e o texto */
+}
+
+.details-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para seções de detalhes */
+.details-section {
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); /* Sombra interna */
+}
+
+.details-section h4 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.details-section h5 {
+    color: var(--dark-gray);
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.details-section ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+    list-style: none; /* Remove o marcador padrão */
+}
+
+.details-section ul li {
+    margin-bottom: 5px;
+    padding-left: 10px; /* Espaço para um ícone customizado se quiser */
+    position: relative;
+}
+
+.details-section ul li::before {
+    content: '•'; /* Marcador de lista customizado */
+    color: var(--primary-blue);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.details-section ul li[style*="color: #dc3545;"] { /* Para notas não encontradas e duplicadas */
+    color: var(--danger-color) !important;
+}
+
+.details-section ul li[style*="color: #856404;"] { /* Para observações */
+    color: var(--warning-color) !important;
+}
+
+
+/* Estilos para links de navegação */
+.nav-link {
+    display: inline-flex; /* Alterado para flex para alinhar ícone */
+    align-items: center;
+    gap: 10px; /* Espaço entre ícone e texto */
+    padding: 12px 25px;
+    background-color: var(--medium-gray);
+    color: var(--dark-gray);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid var(--medium-gray); /* Adicionado borda */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Adicionado sombra */
+}
+
+.nav-link:hover {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+/* Animações suaves */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.result-item {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Melhorias para valores monetários */
+.currency {
+    font-weight: 600;
+    color: var(--dark-gray);
+}
+
+.currency.positive {
+    color: var(--success-color);
+}
+
+.currency.negative {
+    color: var(--danger-color);
+}
+
+/* Estilos para badges de status */
+.status-badge { /* Este estilo não é mais usado na tabela, foi substituído por td .status */
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.correto {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.status-badge.divergente {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Melhorias para tabelas responsivas */
+@media (max-width: 768px) {
+    /* Remover min-width para telas muito pequenas, ou ajustar conforme necessário */
+    table {
+        min-width: unset; /* Remove a largura mínima para telas menores */
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .details-button {
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    label {
+        font-size: 1em;
+    }
+
+    input[type="file"] {
+        font-size: 0.9em;
+    }
+
+    button {
+        font-size: 1em;
+        padding: 10px;
+    }
+}
+
+/* Estilos para loading e transições */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0, 64, 128, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-blue);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Estilos para tooltips */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--dark-gray);
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9em;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
